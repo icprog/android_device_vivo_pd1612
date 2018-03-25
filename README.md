@@ -1,8 +1,10 @@
 # Lineage Device Tree For vivo Y67
 ===========================
+
 CPU:MT6750
 RAM:4G
 Kernel version:3.18.22
+
 Getting Started
 ---------------
 
@@ -32,7 +34,9 @@ Build the code:
     
 Build Information
 -------------
+
 Working:
+ 
  * It is boots and hardware accelerated!
  * WiFi
  * Offline charging
@@ -61,21 +65,24 @@ Working:
  * Special button like in stock + new feature (Check it)
 
 In progress:
+ 
  * Video recording
  * Media codecs
  * Hdr in camera app
+
 Thanks to
- *CyanogenMod team
- *Wuxianlin
- *Ferhung
- *DeckerSU
- *Gearlabs
- *SHVED
- *Xen0n
- *Leskal
- *JonnyXDA
- *olegsvs
- *Visi0nary
- *andyrichardson
- *Deepflex 
- *Team M.A.D
+ 
+ * CyanogenMod team
+ * Wuxianlin
+ * Ferhung
+ * DeckerSU
+ * Gearlabs
+ * SHVED
+ * Xen0n
+ * Leskal
+ * JonnyXDA
+ * olegsvs
+ * Visi0nary
+ * andyrichardson
+ * Deepflex 
+ * Team M.A.D
