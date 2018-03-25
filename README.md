@@ -1,9 +1,11 @@
 # Lineage Device Tree For vivo Y67
-===========================
+---------------
 
-CPU:MT6750
-RAM:4G
-Kernel version:3.18.22
+ CPU:MT6750
+ 
+ RAM:4G
+ 
+ Kernel version:3.18.22
 
 Getting Started
 ---------------
