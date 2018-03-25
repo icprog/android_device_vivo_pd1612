@@ -1,0 +1,3 @@
+add_lunch_combo lineage_pd1612-user
+add_lunch_combo lineage_pd1612-userdebug
+add_lunch_combo lineage_pd1612-eng
