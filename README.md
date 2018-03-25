@@ -22,9 +22,9 @@ Add
 
 Build the code:
     
-    git clone https://github.com/ReallySnow/android_device_huawei_tit_tl00.git -b master device/huawei/tit_tl00
+    git clone https://github.com/ReallySnow/android_device_vivo_pd1612.git -b master device/vivo/pdi612
     
-    git clone https://github.com/ReallySnow/android_vendor_huawei_tit_tl00.git -b master vendor/huawei/tit_tl00
+    git clone https://github.com/ReallySnow/android_vendor_vivo_pd1612.git -b master vendor/vivo/pd1612
     
     source build/envsetup.sh
     
