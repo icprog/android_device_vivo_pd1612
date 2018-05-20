@@ -1,4 +1,5 @@
-# Copyright (C) 2016 The LineageOS Project
+#
+# Copyright (C) 2017  The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,22 +12,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-$(call inherit-product, device/vivo/pd1612/full_pd1612.mk)
-
+# Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
+# Inherit device configuration
+$(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-PRODUCT_NAME := lineage_pd1612
-BOARD_VENDOR := vivo
-PRODUCT_DEVICE := pd1612
+# Device display
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
 
-PRODUCT_GMS_CLIENTID_BASE := android-vivo
-
-PRODUCT_MANUFACTURER := vivo
-PRODUCT_MODEL := vivo Y67
-
+# Device identifier
 PRODUCT_BRAND := vivo
-TARGET_VENDOR := vivo
-TARGET_VENDOR_PRODUCT_NAME := PD1612
-TARGET_VENDOR_DEVICE_NAME := pd1612
+PRODUCT_DEVICE := pd1612
+PRODUCT_MANUFACTURER := vivo
+PRODUCT_MODEL := vivo_Y67
+PRODUCT_NAME := lineage_pd1612
+PRODUCT_RELEASE_NAME := vivo_Y67

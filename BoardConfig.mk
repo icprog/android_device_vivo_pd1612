@@ -5,70 +5,94 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
+# Device path
+LOCAL_PATH := device/vivo/pd1612
+
+# Device board elements
+include $(LOCAL_PATH)/PlatformConfig.mk
+include $(LOCAL_PATH)/board/*.mk
+
+# Device vendor board
+-include vendor/vivo/pd1612/BoardConfigVendor.mk
+
+#######################################################################
+
+# Platform
+TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := mt6750
+TARGET_BOOTLOADER_BOARD_NAME := mt6780
 
-DEVICE_PATH := device/vivo/pd1612
+# MTK Hardware
+BOARD_USES_MTK_HARDWARE := true
+BOARD_HAS_MTK_HARDWARE := true
 
-# Disable NINJA
-#USE_NINJA := false
+ifeq ($(BOARD_USES_MTK_HARDWARE),true)
+    mtk_flags := -DMTK_HARDWARE
 
-MTK_PROJECT_CONFIG ?= $(DEVICE_PATH)/ProjectConfig.mk
-include $(MTK_PROJECT_CONFIG)
-include device/cyanogen/mt6755-common/BoardConfigCommon.mk
+    TARGET_GLOBAL_CFLAGS += $(mtk_flags)
+    TARGET_GLOBAL_CPPFLAGS += $(mtk_flags)
+    CLANG_TARGET_GLOBAL_CFLAGS += $(mtk_flags)
+    CLANG_TARGET_GLOBAL_CPPFLAGS += $(mtk_flags)
 
-MTK_INTERNAL_CDEFS := $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)))
-MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),$(foreach v,$(shell echo $($(t)) | tr '[a-z]' '[A-Z]'),-D$(v))))
-MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)=\"$($(t))\"))
+    2ND_TARGET_GLOBAL_CFLAGS += $(mtk_flags)
+    2ND_TARGET_GLOBAL_CPPFLAGS += $(mtk_flags)
+    2ND_CLANG_TARGET_GLOBAL_CFLAGS += $(mtk_flags)
+    2ND_CLANG_TARGET_GLOBAL_CPPFLAGS += $(mtk_flags)
+endif
 
-BOARD_GLOBAL_CFLAGS += $(MTK_INTERNAL_CDEFS)
-BOARD_GLOBAL_CPPFLAGS += $(MTK_INTERNAL_CDEFS)
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
 
-# Support of MTK NFC
-MTK_NFC_SUPPORT := yes
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
 
-# Kernel informations
-BOARD_KERNEL_IMAGE_NAME := kernel
-BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 enforcing=0 androidboot.selinux=permissive
-BOARD_MKBOOTIMG_ARGS := --board 1465391499 --ramdisk_offset 0x04f88000 --second_offset 0x00e88000 --tags_offset 0x03f88000
+TARGET_BOARD_SUFFIX := _64
+TARGET_USES_64_BIT_BINDER := true
 
-# Kernel properties
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_SOURCE := kernel/vivo/pd1612
-TARGET_KERNEL_CONFIG := flexy_pd1612_defconfig
-
-TARGET_BOOTLOADER_BOARD_NAME := pd1612
-
-#BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-
-# Hack for build
+# Prebuilt kernel
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 
-TARGET_PREBUILT_KERNEL := device/vivo/pd1612/kernel
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+# Kernel
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04f88000 --second_offset 0x00e88000 --tags_offset 0x03f88000 --board 1450352440
+ 
+# Disable memcpy opt (for audio libraries)
+TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_CACHEIMAGE_PARTITION_SIZE := 452984832
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 27879521280
-BOARD_FLASH_BLOCK_SIZE := 4096
+# EGL
+BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
+USE_OPENGL_RENDERER := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
+# Flags
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+# init
+TARGET_PROVIDES_INIT_RC := true
+
+# system.prop
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/soc/11270000.usb3/musb-hdrc/gadget/lun%d/file

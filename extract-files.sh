@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VENDOR=vivo
-DEVICE=pd1612
+VENDOR=elephone
+DEVICE=p9000
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 
@@ -15,4 +15,3 @@ for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
 done
 
 ./setup-makefiles.sh
-
