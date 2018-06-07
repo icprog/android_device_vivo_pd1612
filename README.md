@@ -29,7 +29,7 @@ Build the code:
     
     lunch lineage_pd1612-userdebug
     
-    make -j 4 bacon showcommands 2>&1 | tee build.log
+    make -j8 bacon showcommands 2>&1 | tee build.log
     
     
 Thanks to
