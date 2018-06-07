@@ -40,21 +40,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc
 
-# NFC
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    NfcNci \
-    Tag
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/nfc/nfc.cfg:system/etc/nfc.cfg \
-    $(LOCAL_PATH)/configs/nfc/nfcse.cfg:system/etc/nfcse.cfg \
-    $(LOCAL_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -153,10 +138,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/.thermal_policy_01:system/etc/.tp/.thermal_policy_01 \
 	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/.thermal_policy_02:system/etc/.tp/.thermal_policy_02 \
 	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/thermal.conf:system/etc/.tp/thermal.conf \
-	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/thermal.high.conf:system/etc/.tp/thermal.high.conf \
-	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/thermal.low.conf:system/etc/.tp/thermal.low.conf \
-	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/thermal.mid.conf:system/etc/.tp/thermal.mid.conf \
-	$(LOCAL_PATH)/prebuilt/thermal/custom/etc/.tp/thermal.off.conf:system/etc/.tp/thermal.off.conf \
 	$(LOCAL_PATH)/prebuilt/thermal/custom/bin/thermal:system/bin/thermal \
 	$(LOCAL_PATH)/prebuilt/thermal/custom/bin/thermal_manager:system/bin/thermal_manager \
 	$(LOCAL_PATH)/prebuilt/thermal/custom/bin/thermald:system/bin/thermald \
@@ -164,12 +145,12 @@ PRODUCT_COPY_FILES += \
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT :=1280 
+TARGET_SCREEN_WIDTH := 720
 
 # Fingerprint
 PRODUCT_PACKAGES += \
