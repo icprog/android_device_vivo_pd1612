@@ -17,11 +17,6 @@ $(call inherit-product, device/vivo/pd1612/full_pd1612.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 
-# Device display
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
-
-
 PRODUCT_NAME := lineage_pd1612
 BOARD_VENDOR := vivo
 PRODUCT_DEVICE := pd1612
