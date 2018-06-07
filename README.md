@@ -21,9 +21,9 @@ Sync sources:
 
 Build the code:
     
-    git clone https://github.com/ReallySnow/android_device_vivo_pd1612.git -b master device/vivo/pdi612
+    git clone https://github.com/ReallySnow/android_device_vivo_pd1612.git -b cm13 device/vivo/pdi612
     
-    git clone https://github.com/ReallySnow/android_vendor_vivo_pd1612.git -b master vendor/vivo/pd1612
+    git clone https://github.com/ReallySnow/android_vendor_vivo_pd1612.git -b cm13 vendor/vivo/pd1612
     
     source build/envsetup.sh
     
