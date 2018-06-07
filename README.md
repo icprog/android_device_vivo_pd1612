@@ -18,10 +18,6 @@ Sync sources:
 
     repo sync
     
-Add 
-  
-    git clone http://github.com/LineageOS/android_packages_resources_devicesettings.git -b cm-14.1 packages/resources/devicesettings
-
 Build the code:
     
     git clone https://github.com/ReallySnow/android_device_vivo_pd1612.git -b master device/vivo/pdi612
@@ -34,43 +30,6 @@ Build the code:
     
     make -j 4 bacon showcommands 2>&1 | tee build.log
     
-Build Information
--------------
-
-Working:
- 
- * It is boots and hardware accelerated!
- * WiFi
- * Offline charging
- * GPS
- * AGPS
- * Vibration
- * Audio
- * Auto brightness
- * RAM and ROM
- * Rotation
- * Fast charging
- * All sensors
- * NFC (Payments, pairing)
- * Lazer autofocus
- * Flashlight (Statusbar and Camera)
- * Bluetooth
- * Camera (Main/Sub, Focus/Autofocus, Laser autofocus)
- * External SD
- * RIL for SMS/Calls/Internet/Lte on 1 and 2 SIM
- * MTP and Mass Storage mode
- * Audio over Bluetooth ((a2dp)Music and etc)
- * Fingerprint Scanner
- * FM Radio
- * Wi-fi Tethering
- * Home button like in stock
- * Special button like in stock + new feature (Check it)
-
-In progress:
- 
- * Video recording
- * Media codecs
- * Hdr in camera app
 
 Thanks to
  
