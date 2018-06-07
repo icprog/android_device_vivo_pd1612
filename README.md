@@ -1,59 +1,51 @@
-Device For vivo Y67
-===========================
-For Stock 3.18.22 kernel
+# Lineage Device Tree For vivo Y67
+---------------
 
-By ReallySnow
-
-Thanks To:
-
-LineageOS
-
-Divis1969
-
-Oleg.svs
-
-Moyster
-
-Mad Team
-
-danielhk
-
-s4704
-
-wan kaiyi
-
-and more
+ CPU:MT6750
+ 
+ RAM:4G
+ 
+ Kernel version:3.18.22
 
 Getting Started
 ---------------
 
 Initialize a repository with Los14.1:
 
-    repo init -u git://github.com/lineageos/android.git -b cm-13.0
+    repo init -u git://github.com/lineageos/android.git -b cm-14.1
     
 Sync sources:    
 
     repo sync
     
-Add 
-  
-    git clone http://github.com/LineageOS/android_packages_resources_devicesettings.git -b cm-13.0 packages/resources/devicesettings
 
 Build the code:
     
-    git clone https://github.com/ReallySnow/android_device_vivo_pd1612_tl00.git -b cm13 device/vivo/pd1612
+    git clone https://github.com/ReallySnow/android_device_vivo_pd1612.git -b master device/vivo/pdi612
     
-    cd device/vivo/pd1612/patches
-    
-    ./apply.sh
-    
-    cd ../../../../
-    
-    git clone https://github.com/ReallySnow/android_vendor_vivo_pd1612_tl00.git -b cm13 vendor/vivo/pd1612
+    git clone https://github.com/ReallySnow/android_vendor_vivo_pd1612.git -b master vendor/vivo/pd1612
     
     source build/envsetup.sh
     
     lunch lineage_pd1612-userdebug
     
-    make -j4 bacon showcommands 2>&1 | tee build.log
+    make -j 4 bacon showcommands 2>&1 | tee build.log
     
+    
+Thanks to
+ 
+ * CyanogenMod team
+ * Wuxianlin
+ * Ferhung
+ * DeckerSU
+ * Gearlabs
+ * SHVED
+ * Xen0n
+ * Leskal
+ * JonnyXDA
+ * olegsvs
+ * Visi0nary
+ * andyrichardson
+ * Deepflex 
+ * Team M.A.D
+ 
